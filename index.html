@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cloud 5 Raid</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<script>
+document.getElementById('bullet').addEventListener('load', function() {
+	document.getElementById('bullet').classList.add("shoot");
+});
+var a = 0;
+document.addEventListener('keydown', function (e){
+	a = parseInt(a);
+	if(e.key == "ArrowUp"){
+		e.preventDefault();
+		a+= 50;
+document.getElementById('soldier').style.transform = "translateZ("+ a +"px) perspective("+ (a * 2) +"px)";
+		if(e.repeat){
+		e.preventDefault();
+			a += 50;
+document.getElementById('soldier').style.transform = "translateZ("+ a +"px) perspective("+ (a * 2) +"px)";
+		}
+	}
+	if(e.key == "ArrowDown"){
+		e.preventDefault();
+		a -= 50;
+document.getElementById('soldier').style.transform = "translateZ("+ a +"px) perspective("+ (a * 2) +"px)";
+		if(e.repeat){
+				e.preventDefault();
+		a -= 50;
+document.getElementById('soldier').style.transform = "translateZ("+ a +"px) perspective("+ (a * 2) +"px)";
+		}
+	}
+});
+
+
+
+</script>
+<body style="background-image: url(Sky.jpeg);">
+	<div id="row1"><model-viewer src="ground.glb" id="ground" style="height: 1600px; width: 1600px; z-index: 0; position: absolute;" ></model-viewer>
+</div>
+	<model-viewer src="Bullet.glb" style="height: 50px;top: 500px; width: 50px; z-index: 1; background-color: transparent; position: relative; margin: none;" id="bullet"></model-viewer>
+		<model-viewer src="Soldi.glb" style="height: 500px; width: 500px; position: absolute; top: 500px; background-color: transparent; z-index: 2; ;" id="soldier" camera-controls></model-viewer>
+
+  <script src="script.js" ></script>
+</body>
+
+</html>
