@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  width: 100%;
+	text-align: center;
+	display: grid;
+}
+.shoot {
+	animation-name: shoot;
+	animation-iteration-count: infinite;
+	animation-duration: 2s;
+	z-index: -1;
+}
+@keyframes shoot{
+from{transform: perspective(1000px)
+ translateZ(-5000px);}
+	to{transform: perspective(500px) translateZ(0px);}
+}
+#row1{
+	position: absolute;
+}
+#bullet{
+	left: 200px;
+		grid-area: 1/1;
+}
+#soldier{
+	grid-area: 1/1;
+	z-index: 1;
+	position: relative;
+}
+.retreat{
+	animation-name: retreat;
+	animation-duration: 500ms;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes retreat{
+	100%{transform: translateZ(-100px);}
+}
